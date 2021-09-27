@@ -19,3 +19,5 @@ print(int(3.1) == int(3.99))
 
 print(int("322"))
 print(int("1a", 16))
+
+print(float('3.14'))
