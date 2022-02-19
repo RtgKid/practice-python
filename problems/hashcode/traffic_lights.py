@@ -123,33 +123,34 @@ def write_to_file():
     intersections = in_streets_of_inter(dfstreets)
     car_count = start_car_count(dfpaths)
     
-    #print(busy_streets)
-    file = open("qualification_round_2021.in/d_ans_car_count.txt", "w")
-    #print(I)
-    file.write(str(I) + "\n")
-    for interId in intersections:
-        #print(interId)
-        file.write(str(interId) + "\n")
-        streets = sorted(intersections[interId], key = lambda x: car_count.get(x, 0),reverse=True)
-        #print(len(intersections[interId]))
-        file.write(str(len(streets)) + "\n")
+    print(busy_streets)
+    print(car_count)
+    # file = open("qualification_round_2021.in/d_ans_car_count.txt", "w")
+    # #print(I)
+    # file.write(str(I) + "\n")
+    # for interId in intersections:
+    #     #print(interId)
+    #     file.write(str(interId) + "\n")
+    #     streets = sorted(intersections[interId], key = lambda x: car_count.get(x, 0),reverse=True)
+    #     #print(len(intersections[interId]))
+    #     file.write(str(len(streets)) + "\n")
 
-        iter_strs = []
-        for ss in streets:
-            if ss in busy_streets:
-                iter_strs.append(busy_streets[ss])
-        w_streets = [str(i / min(iter_strs)) for i in iter_strs]        
+    #     iter_strs = []
+    #     for ss in streets:
+    #         if ss in busy_streets:
+    #             iter_strs.append(busy_streets[ss])
+    #     w_streets = [str(i / min(iter_strs)) for i in iter_strs]        
 
-        for ss in streets:
-            i = 0
-            if ss in busy_streets:
-                #print(str(ss) + " " + str(busy_streets[ss]))
-                file.write(str(ss) + " " + str(w_streets[i]) + "\n")
-            else:
-                file.write(str(ss) + " " + "1" + "\n")
-            i = i + 1    
+    #     for ss in streets:
+    #         i = 0
+    #         if ss in busy_streets:
+    #             #print(str(ss) + " " + str(busy_streets[ss]))
+    #             file.write(str(ss) + " " + str(w_streets[i]) + "\n")
+    #         else:
+    #             file.write(str(ss) + " " + "1" + "\n")
+    #         i = i + 1    
                     
-    file.close()            
+    # file.close()            
 
 
 write_to_file()
