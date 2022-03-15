@@ -123,40 +123,44 @@ def write_to_file():
     intersections = in_streets_of_inter(dfstreets)
     car_count = start_car_count(dfpaths)
     
-    print(busy_streets)
-    print(car_count)
-    # file = open("qualification_round_2021.in/d_ans_car_count.txt", "w")
-    # #print(I)
-    # file.write(str(I) + "\n")
-    # for interId in intersections:
-    #     #print(interId)
-    #     file.write(str(interId) + "\n")
-    #     streets = sorted(intersections[interId], key = lambda x: car_count.get(x, 0),reverse=True)
-    #     #print(len(intersections[interId]))
-    #     file.write(str(len(streets)) + "\n")
+    #print(busy_streets)
+    #print(car_count)
+    file = open("qualification_round_2021.in/d_ans_car_count_last1.txt", "w")
+    #print(I)
+    file.write(str(I) + "\n")
+    for interId in intersections:
+        #print(interId)
+        file.write(str(interId) + "\n")
+        streets = sorted(intersections[interId], key = lambda x: busy_streets.get(x, 0),reverse=True)
+        file.write(str(3) + "\n")
 
-    #     iter_strs = []
-    #     for ss in streets:
-    #         if ss in busy_streets:
-    #             iter_strs.append(busy_streets[ss])
-    #     w_streets = [str(i / min(iter_strs)) for i in iter_strs]        
+        
 
-    #     for ss in streets:
-    #         i = 0
-    #         if ss in busy_streets:
-    #             #print(str(ss) + " " + str(busy_streets[ss]))
-    #             file.write(str(ss) + " " + str(w_streets[i]) + "\n")
-    #         else:
-    #             file.write(str(ss) + " " + "1" + "\n")
-    #         i = i + 1    
+        iter_strs = []
+        for ss in streets:
+            if ss in busy_streets:
+                iter_strs.append(busy_streets[ss])
+        #w_streets = [int(i / min(iter_strs)) for i in iter_strs]        
+
+        for ss in streets:
+            i = 0
+            while i < 3:
+                if ss in busy_streets:
+                    #print(str(ss) + " " + str(w_streets[i]))
+                    file.write(str(ss) + " " + str(busy_streets[ss]) + "\n")
+                else:
+                    file.write(str(ss) + " " + "1" + "\n")    
+                i = i + 1    
+            break    
                     
-    # file.close()            
+    file.close()            
 
 
 write_to_file()
 
 from scoring import scoring
-print(scoring(input_file='qualification_round_2021.in/d.txt',output_file='qualification_round_2021.in/d_ans_car_count.txt'))
+print("start scoring")
+print(scoring(input_file='qualification_round_2021.in/d.txt',output_file='qualification_round_2021.in/d_ans_car_count_last1.txt'))
 
     
   
