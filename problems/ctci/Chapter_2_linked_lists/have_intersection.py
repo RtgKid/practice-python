@@ -40,7 +40,40 @@ def have_intersection(m : ListNode, n : ListNode) -> ListNode:
         return m
     return None
 
-print(have_intersection(n, m))
-print(have_intersection(n1, m1))
+# print(have_intersection(n, m))
+# print(have_intersection(n1, m1))
 
 
+def intersection_no_change(n : ListNode, m : ListNode) -> ListNode:
+    l_n = findLenght(n)
+    l_m = findLenght(m)
+
+    diff = l_n - l_m
+
+    if diff < 0:
+        for _ in range(abs(diff)):
+            m = m.next
+
+    elif diff > 0:
+        for _ in range(abs(diff)):
+            n = n.next
+
+    while n.next:
+        if n.next == m.next:
+            return m.next
+        n = n.next
+        m = m.next
+
+    return None                    
+
+def findLenght(n : ListNode) -> int:
+    s = 1
+    p = n
+    while p.next:
+        s += 1
+        p = p.next
+    return s
+
+
+print(intersection_no_change(n, m))
+print(intersection_no_change(n1, m1))  
